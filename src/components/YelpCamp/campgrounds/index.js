@@ -13,7 +13,7 @@ const Homepage = () => {
         </h1>
         <p>View our handpicked campgrounds from all over the world!</p>
         <p>
-          <a className="btn btn-primary btn-large" href="/campgrounds/new">
+          <a className="btn btn-primary btn-large" href="/yelpcamp/campgrounds/new">
             Add New Campground
           </a>
         </p>
