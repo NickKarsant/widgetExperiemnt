@@ -26,6 +26,7 @@ const Accordion = ({ items }) => {
           <p>{item.content}</p>
         </div>
       </React.Fragment>
+
     );
   });
 
