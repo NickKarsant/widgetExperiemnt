@@ -1,8 +1,11 @@
 import React from "react";
+import Nav from "../Nav";
 
 const Login = () => {
   return (
     <div className="ui container">
+
+    <Nav />
       <div className="ui one column stackable center aligned page grid">
         <div className="column twelve wide">
           <h2>Log In</h2>
@@ -36,7 +39,7 @@ const Login = () => {
         </div>
       </div>
       <a href="/yelpcamp/campgrounds" className="ui green button">
-        Back
+        Homepage
       </a>
     </div>
   );

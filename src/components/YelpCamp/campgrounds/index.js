@@ -1,25 +1,11 @@
 import React from "react";
+import Nav from "../Nav";
 
 const Homepage = () => {
   return (
 
     <div className="ui container">
-      <nav className="navbar navbar-default">
-        <div className="container-fluid">
-          <div className="navbar-header">
-            <a className="navbar-brand" href="/yelpcamp">YelpCamp</a>
-          </div>
-      
-          <div className="collapse navbar-collapse">
-            <ul className="nav navbar-nav navbar-right">
-              <li><a href="/yelpcamp/login">Login</a></li>
-              <li><a href="/yelpcamp/register">Register</a></li>
-              {/* <li> <a href="#"> Signed in as currentUser.username</a></li> */}
-              {/* <li><a href="/logout">Log Out</a></li> */}
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <Nav />
 
       <header className="jumbotron">
         <h1>
