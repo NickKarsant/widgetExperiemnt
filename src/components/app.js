@@ -7,6 +7,9 @@ import Accordion from "./Accordion";
 import Translate from "./Translate";
 import VideoApp from "./Youtube/VideoApp";
 
+// YelpCamp
+import Landing from "./YelpCamp/Landing"
+
 
 const items = [
   {
@@ -105,6 +108,10 @@ export default () => {
 
       <Route  path='/video'>
         <VideoApp />
+      </Route>
+
+      <Route  path='/yelpcamp'>
+        <Landing />
       </Route>
 
     </div>
