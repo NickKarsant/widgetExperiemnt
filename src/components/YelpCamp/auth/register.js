@@ -1,13 +1,13 @@
 import React from "react";
 
-const Login = () => {
+const Register = () => {
   return (
     <div className="ui container">
       <div className="ui one column stackable center aligned page grid">
         <div className="column twelve wide">
-          <h2>Log In</h2>
+          <h2>Sign Up</h2>
           <div className="form">
-            <form action="/login" method="POST">
+            <form action="/register" method="POST">
               <div className="form-group">
                 <input
                   className="form-control"
@@ -42,4 +42,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

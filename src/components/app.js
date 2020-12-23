@@ -9,6 +9,10 @@ import VideoApp from "./Youtube/VideoApp";
 
 // YelpCamp
 import Landing from "./YelpCamp/Landing"
+import Show from "./YelpCamp/campgrounds/show"
+import Homepage from "./YelpCamp/campgrounds/index"
+import Login from "./YelpCamp/auth/login"
+import Register from "./YelpCamp/auth/register"
 
 
 const items = [
@@ -112,6 +116,18 @@ export default () => {
 
       <Route  path='/yelpcamp'>
         <Landing />
+      </Route>
+
+      <Route  path='/yelpcamp/campgrounds'>
+        <Homepage />
+      </Route>
+
+      <Route  path='/yelpcamp/login'>
+        <Login />
+      </Route>
+
+      <Route  path='/yelpcamp/register'>
+        <Register />
       </Route>
 
     </div>

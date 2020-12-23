@@ -7,7 +7,7 @@ const Landing = () => {
     <>
     <div id="landing-header">
       <h1>Welcome to YelpCamp!</h1>
-      <a href="/campgrounds" class="btn btn-lg btn-success">View All Campgrounds</a>
+      <a href="/yelpcamp/campgrounds" className="btn btn-lg btn-success">View All Campgrounds</a>
     </div>
     
     <ul className="slideshow">
