@@ -2,6 +2,7 @@ const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
 const logger = require("morgan");
 const cors = require("cors");
 const indexRouter = require("./routes/index");
@@ -46,13 +47,14 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
 // adding new campground
-app.use("/yelpcamp/campgrounds/new", newCampground);
+// app.use("/yelpcamp/campgrounds/new", newCampground);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -69,5 +71,16 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
+
+
+app.get('/yelpcamps/campgrounds/new', (req, res) => {
+  console.log("hit");
+});
+
+// app.listen(9000, function(){
+//   console.log("LISTENING");
+// });
+
+
 
 module.exports = app;

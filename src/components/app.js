@@ -86,17 +86,11 @@ const App = () => {
   const [selected, setSelected] = useState(options[0]);
 
   useEffect(() => {
-    callAPI();
+    displayAllCamps();
   }, []);
 
-  const callAPI = () => {
-    fetch("http://localhost:9000/yelpcamp/campgrounds/new")
-    // res is an object, turn into text format
-      .then(res => res.text())
-      // set res to state apiResponse
-      .then(res => setApiResponse(res))
-      // errors
-      .catch(err => err);
+  const displayAllCamps = () => {
+    // access mongoDB via mongoose and display all campgrounds
   };
 
   return (
