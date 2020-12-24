@@ -14,14 +14,15 @@ const Homepage = () => {
   //   // access mongoDB via mongoose and display all campgrounds
   // };
 
-  const callTestAPI = () => {
+  const getAllCampgrounds = () => {
     fetch("http://localhost:9000/index")
     .then(res => res.text())
     .then(res => setApiResponse(res))
   };
 
   useEffect(() => {
-    callTestAPI();
+    getAllCampgrounds();
+    console.log(apiResponse);
   }, []);
 
 
