@@ -82,17 +82,9 @@ const options = [
 
 
 const App = () => {
-  const [apiResponse, setApiResponse] = useState("");
   const [selected, setSelected] = useState(options[0]);
 
-  useEffect(() => {
-    displayAllCamps();
-  }, []);
-
-  const displayAllCamps = () => {
-    // access mongoDB via mongoose and display all campgrounds
-  };
-
+ 
   return (
     <div>
     <Header />
@@ -143,8 +135,6 @@ const App = () => {
         <New />
       </Route>
 
-      <p>something</p>
-      <p>{apiResponse}</p>
 
     </div>
   );

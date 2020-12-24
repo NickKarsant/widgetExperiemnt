@@ -1,7 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Nav from "../Nav";
 
 const Homepage = () => {
+  const [apiResponse, setApiResponse] = useState("");
+
+  // useEffect(() => {
+  //   displayAllCamps();
+  // }, []);
+
+ 
+
+  // const displayAllCamps = () => {
+  //   // access mongoDB via mongoose and display all campgrounds
+  // };
+
+  const callTestAPI = () => {
+    fetch("http://localhost:9000/testAPI")
+    .then(res => res.text())
+    .then(res => setApiResponse(res))
+  };
+
+  useEffect(() => {
+    callTestAPI();
+  }, []);
+
+
   return (
 
     <div className="ui container">
@@ -18,6 +41,8 @@ const Homepage = () => {
           </a>
         </p>
       </header>
+
+      {apiResponse}
 
       {/* <div className="row text-center" style={{display: "flex", flexWrap: "wrap"}}>
         <div className="col-md-3 col-sm-6">
