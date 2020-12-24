@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import Search from "./Search";
 import Route from "./Route";
@@ -81,10 +81,20 @@ const options = [
 
 
 
-export default () => {
+const App = () => {
+  const [apiResponse, setApiResponse] = useState("");
   const [selected, setSelected] = useState(options[0]);
 
+  useEffect(() => {
+    callAPI();
+  }, []);
 
+  const callAPI = () => {
+    fetch("http://localhost:9000/yelpcamp/campgrounds/new")
+      .then(res => res.text())
+      .then(res => setApiResponse(res))
+      .catch(err => err);
+  };
 
   return (
     <div>
@@ -136,6 +146,10 @@ export default () => {
         <New />
       </Route>
 
+      <p>{apiResponse}</p>
+
     </div>
   );
 };
+
+export default App;
