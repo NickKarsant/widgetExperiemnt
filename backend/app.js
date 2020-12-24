@@ -7,18 +7,29 @@ const cors = require("cors");
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const mongoose = require("mongoose");
+const seedDB = require("./seed")
 
 // connect to database
 mongoose.connect("mongodb://localhost:27017/widgetYelp", {
   useUnifiedTopology: true,
   useNewUrlParser: true
+})
+.then(() => {
+  console.log("WidgetYelp database connected")
+})
+.catch(err => {
+  console.log("OH NO ERROR!")
+  console.log(err)
 });
 
 const db = mongoose.connection;
-db.on('error', console.error.bind(console, "connection error:"));
-db.once('open', function(){
-  console.log("WidgetYelp database connected")
-});
+// db.on('error', console.error.bind(console, "connection error:"));
+// db.once('open', function(){
+//   console.log("WidgetYelp database connected")
+// });
+
+// seed database
+seedDB();
 
 
 // adding new campground

@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Homepage = () => {
+const allCamps = () => {
 
 
   return (
@@ -58,4 +58,4 @@ const Homepage = () => {
 }
 
 
-export default Homepage;
+export default allCamps;
