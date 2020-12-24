@@ -91,8 +91,11 @@ const App = () => {
 
   const callAPI = () => {
     fetch("http://localhost:9000/yelpcamp/campgrounds/new")
+    // res is an object, turn into text format
       .then(res => res.text())
+      // set res to state apiResponse
       .then(res => setApiResponse(res))
+      // errors
       .catch(err => err);
   };
 
@@ -146,6 +149,7 @@ const App = () => {
         <New />
       </Route>
 
+      <p>something</p>
       <p>{apiResponse}</p>
 
     </div>
