@@ -15,7 +15,7 @@ const Homepage = () => {
   // };
 
   const callTestAPI = () => {
-    fetch("http://localhost:9000/testAPI")
+    fetch("http://localhost:9000/index")
     .then(res => res.text())
     .then(res => setApiResponse(res))
   };

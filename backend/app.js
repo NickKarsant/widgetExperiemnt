@@ -11,12 +11,8 @@ const usersRouter = require("./routes/users");
 const mongoose = require("mongoose");
 const seedDB = require("./seed")
 
-var testAPIRouter = require("./routes/testAPI");
-
-
 const campRouter = require("./routes/new");
-// adding new campground
-const allCamps = require("./routes/index");
+const allCampsRouter = require("./routes/index");
 
 // connect to database
 mongoose.connect("mongodb://localhost:27017/widgetYelp", {
@@ -57,9 +53,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/index", allCamps);
-
-app.use("/testAPI", testAPIRouter)
+app.use("/index", allCampsRouter);
 
 
 
