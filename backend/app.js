@@ -9,6 +9,7 @@ const cors = require("cors");
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const mongoose = require("mongoose");
+const mongoDB = require("mongodb");
 const seedDB = require("./seed");
 
 const Campground = require('./models/campground');
@@ -35,6 +36,8 @@ const db = mongoose.connection;
 // db.once('open', function(){
 //   console.log("WidgetYelp database connected")
 // });
+
+
 
 // seed database
 seedDB();

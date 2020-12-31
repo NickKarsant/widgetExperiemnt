@@ -4,15 +4,6 @@ import Nav from "../Nav";
 const Homepage = () => {
   const [apiResponse, setApiResponse] = useState("");
 
-  // useEffect(() => {
-  //   displayAllCamps();
-  // }, []);
-
- 
-
-  // const displayAllCamps = () => {
-  //   // access mongoDB via mongoose and display all campgrounds
-  // };
 
   const getAllCampgrounds = () => {
     fetch("http://localhost:9000/index")
@@ -22,7 +13,7 @@ const Homepage = () => {
 
   useEffect(() => {
     getAllCampgrounds();
-    console.log(apiResponse);
+    // console.log(apiResponse);
   }, []);
 
 
