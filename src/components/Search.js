@@ -21,7 +21,7 @@ const Search = () => {
   useEffect(() => {
     // search wiki api when term changes
     const search = async () => {
-      const { data } = await axios.get("http://en.wikipedia.org/w/api.php", {
+      const { data } = await axios.get("https://en.wikipedia.org/w/api.php", {
         params: {
           action: "query",
           list: "search",
