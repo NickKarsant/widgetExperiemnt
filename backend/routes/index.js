@@ -6,12 +6,11 @@ const Campground = require('../models/campground');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   
-  const getCamps = async () => { 
-    const data = await Campground.find()
-    
-    
-    res.send(data);
-  }
+  // const getCamps = async () => { 
+    // const data = await Campground.find()
+    // console.log(data);
+    // res.send(data);
+  // }
 
 });
 

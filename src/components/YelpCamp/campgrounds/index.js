@@ -34,7 +34,7 @@ const Homepage = () => {
         </p>
       </header>
 
-      {apiResponse}
+      {apiResponse.name}
 
       {/* <div className="row text-center" style={{display: "flex", flexWrap: "wrap"}}>
         <div className="col-md-3 col-sm-6">
