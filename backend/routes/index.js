@@ -6,16 +6,13 @@ const Campground = require('../models/campground');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   
-  const allCamps = async () => { 
+  const getCamps = async () => { 
     const data = await Campground.find()
-
-    console.log(typeof(data));
-    console.log(data);
+    
+    
+    res.send(data);
   }
-  const something = allCamps();
-  // console.log(`allCamps is:  ${allCamps}`);
-  res.send("API is working properly but database query isnt");
-  // res.send(allCamps);
+
 });
 
 module.exports = router;
