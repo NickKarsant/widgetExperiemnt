@@ -1,11 +1,13 @@
-import React from "react";
-import './css/nav.css'
+import React, { useEffect } from "react";
+import "./css/nav.css";
 
 const Nav = () => {
-  const burgerMenu = document.getElementById("burger");
+
+  const burger = document.getElementById("burger");
   function toggleBurger() {
     // Toggle between adding / removing the opened-nav class from the menu
-    // burgerMenu.classList.toggle("opened-nav");
+    
+    // burger.classList.toggle("opened-nav");
   }
 
   // We get all the a elements with class "nav-item", and attach a click
@@ -13,7 +15,7 @@ const Nav = () => {
   const theLinks = document.querySelectorAll(".nav-item");
   theLinks.forEach(link =>
     link.addEventListener("click", () => {
-      burgerMenu.classList.remove("opened-nav");
+      burger.classList.remove("opened-nav");
     })
   );
 
@@ -24,22 +26,26 @@ const Nav = () => {
           <a className="navbar-brand" href="/yelpcamp">
             YelpCamp
           </a>
-          <button id="burger" onClick={toggleBurger(this)} class="btn btn-sm navbar-toggle collapsed">
-            <div class="bar1"></div>
-            <div class="bar2"></div>
-            <div class="bar3"></div>
+          <button
+            id="burger"
+            onClick={toggleBurger(this)}
+            className="btn btn-sm navbar-toggle collapsed"
+          >
+            <div className="bar1"></div>
+            <div className="bar2"></div>
+            <div className="bar3"></div>
           </button>
         </div>
 
         <div className="collapse navbar-collapse">
           <ul className="nav navbar-nav navbar-right">
             <li>
-              <a href="/yelpcamp/login" class="nav-item">
+              <a href="/yelpcamp/login" className="nav-item">
                 Login
               </a>
             </li>
             <li>
-              <a href="/yelpcamp/register" class="nav-item">
+              <a href="/yelpcamp/register" className="nav-item">
                 Register
               </a>
             </li>

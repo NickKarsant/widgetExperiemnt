@@ -4,21 +4,17 @@ import Nav from "../Nav";
 const Homepage = () => {
   const [apiResponse, setApiResponse] = useState("");
 
-
   const getAllCampgrounds = () => {
     fetch("http://localhost:9000/index")
-    .then(res => res.text())
-    .then(res => setApiResponse(res))
+      // .then(res => res.text())
+      .then(res => console.log(res));
   };
 
   useEffect(() => {
     getAllCampgrounds();
-    // console.log(apiResponse);
   }, []);
 
-
   return (
-
     <div className="ui container">
       <Nav />
 
@@ -28,13 +24,16 @@ const Homepage = () => {
         </h1>
         <p>View our handpicked campgrounds from all over the world!</p>
         <p>
-          <a className="btn btn-primary btn-large" href="/yelpcamp/campgrounds/new">
+          <a
+            className="btn btn-primary btn-large"
+            href="/yelpcamp/campgrounds/new"
+          >
             Add New Campground
           </a>
         </p>
       </header>
 
-      {apiResponse.name}
+      {/* {apiResponse} */}
 
       {/* <div className="row text-center" style={{display: "flex", flexWrap: "wrap"}}>
         <div className="col-md-3 col-sm-6">
