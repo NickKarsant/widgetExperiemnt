@@ -6,9 +6,9 @@ const Homepage = () => {
 
   const getAllCampgrounds = () => {
     fetch("http://localhost:9000/index")
-      .then(res => res.json())
-      .then(res => console.log(JSON.stringify(res)))
-      .then(res => console.log('the reponse: ' + res))
+      .then(res => res.text())
+      // .then(res => console.log(JSON.stringify(res)))
+      // .then(res => console.log('the reponse: ' + res))
       .then(res => setCampsitesData(res));
   };
 

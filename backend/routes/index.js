@@ -4,13 +4,11 @@ const Campground = require('../models/campground');
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', async (req, res) => {
   
-  const getCamps = async () => { 
-    const data = await Campground.find()
-    res.send(data);
-  }
-  getCamps();
+  const campgrounds = await Campground.find({});
+  res.send(campgrounds);
+
 });
 
 module.exports = router;
