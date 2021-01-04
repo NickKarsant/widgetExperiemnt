@@ -2,17 +2,22 @@ import React, { useState, useEffect } from "react";
 import Nav from "../Nav";
 
 const Homepage = () => {
-  const [apiResponse, setApiResponse] = useState("");
+  const [campsitesData, setCampsitesData] = useState("");
 
   const getAllCampgrounds = () => {
     fetch("http://localhost:9000/index")
-      // .then(res => res.text())
-      .then(res => console.log(res));
+      .then(res => res.json())
+      .then(res => console.log(JSON.stringify(res)))
+      .then(res => console.log('the reponse: ' + res))
+      .then(res => setCampsitesData(res));
   };
+
 
   useEffect(() => {
     getAllCampgrounds();
   }, []);
+
+
 
   return (
     <div className="ui container">
@@ -33,7 +38,8 @@ const Homepage = () => {
         </p>
       </header>
 
-      {/* {apiResponse} */}
+      {campsitesData}
+      
 
       {/* <div className="row text-center" style={{display: "flex", flexWrap: "wrap"}}>
         <div className="col-md-3 col-sm-6">
