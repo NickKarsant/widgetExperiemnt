@@ -1,23 +1,30 @@
 import React, { useState, useEffect } from "react";
+import ReactDOM from 'react-dom';
 import Nav from "../Nav";
+import Camplist from "../Camplist";
 
 const Homepage = () => {
-  const [campsitesData, setCampsitesData] = useState("");
+  const [campsitesData, setCampsitesData] = useState([]);
 
-  const getAllCampgrounds = () => {
-    fetch("http://localhost:9000/index")
-      .then(res => res.text())
-      // .then(res => console.log(JSON.stringify(res)))
-      // .then(res => console.log('the reponse: ' + res))
-      .then(res => setCampsitesData(res));
+
+  const getCampData = async () => {
+    const response = await fetch("http://localhost:9000/index");
+
+    if (response.ok) {
+      var campData = await response.json();
+    }
+    return campData;
   };
 
 
   useEffect(() => {
-    getAllCampgrounds();
+    getCampData().then(function(results) {
+      // console.log(results)
+      setCampsitesData(results)
+    })
   }, []);
 
-
+  // console.log(campsitesData);
 
   return (
     <div className="ui container">
@@ -37,28 +44,10 @@ const Homepage = () => {
           </a>
         </p>
       </header>
-
-      {campsitesData}
-      
-
-      {/* <div className="row text-center" style={{display: "flex", flexWrap: "wrap"}}>
-        <div className="col-md-3 col-sm-6">
-          <div className="thumbnail">
-            <img src="" />
-            <div className="caption">
-              <h4> campground Name </h4>
-            </div>
-            <p>
-              <a
-                className="btn btn-primary"
-                href="/campgrounds/<%= campground._id %>"
-              >
-                More Info
-              </a>
-            </p>
-          </div>
-        </div>
-      </div> */}
+      <div className="ui container" id="cardlist">
+        <Camplist camps={campsitesData}/>
+        I have {campsitesData.length} videos.
+      </div>
     </div>
   );
 };
