@@ -44,9 +44,8 @@ const Homepage = () => {
           </a>
         </p>
       </header>
-      <div className="ui container" id="cardlist">
+      <div className="ui grid" id="cardlist">
         <Camplist camps={campsitesData}/>
-        I have {campsitesData.length} videos.
       </div>
     </div>
   );
