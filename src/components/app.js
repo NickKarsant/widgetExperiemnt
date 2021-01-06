@@ -14,6 +14,9 @@ import Landing from "./YelpCamp/Landing";
 import Homepage from "./YelpCamp/campgrounds/index";
 import Register from "./YelpCamp/auth/register";
 
+// YelpCamp
+// import './index.js'
+
 
 const items = [
   {
@@ -81,8 +84,10 @@ const options = [
 
 
 
+
 const App = () => {
   const [selected, setSelected] = useState(options[0]);
+  
 
  
   return (
@@ -134,6 +139,8 @@ const App = () => {
       <Route  path='/yelpcamp/campgrounds/new'>
         <New />
       </Route>
+      
+
 
 
     </div>

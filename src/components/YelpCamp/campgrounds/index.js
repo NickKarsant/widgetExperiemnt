@@ -6,7 +6,6 @@ import Camplist from "../Camplist";
 const Homepage = () => {
   const [campsitesData, setCampsitesData] = useState([]);
 
-
   const getCampData = async () => {
     const response = await fetch("http://localhost:9000/index");
 
@@ -19,12 +18,10 @@ const Homepage = () => {
 
   useEffect(() => {
     getCampData().then(function(results) {
-      // console.log(results)
       setCampsitesData(results)
     })
   }, []);
 
-  // console.log(campsitesData);
 
   return (
     <div className="ui container">

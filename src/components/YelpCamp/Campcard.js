@@ -5,7 +5,7 @@ const Campcard = (camp) => {
   return (
   
     <div className="five wide column text-center" style={{display: "flex", flexWrap: "wrap"}}>
-        <div >
+        <div>
           
           <div className="thumbnail">
             <img src={camp.camp.image}/> 

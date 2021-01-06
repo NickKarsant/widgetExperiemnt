@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const allCamps = () => {
+const Campdetail = (camp) => {
 
 
   return (
@@ -18,21 +18,21 @@ const allCamps = () => {
       </div>
       <div className="col-md-9 col-sm-9 col-xs-9">
         <div className="thumbnail">
-          <img className="img-responsive" src="<%= campground.image%>" />
+          <img className="img-responsive" src={camp.camp.image} />
           <div className="caption-full">
-            <h4 className="pull-right"> price/night </h4>
+            <h4 className="pull-right"> {`${camp.camp.price} dollars/night`} </h4>
             <p>
               <em>Submitted By </em>
             </p>
-              <a className="btn btn-warning" href="/campgrounds/<%=campground._id%>/edit">Edit</a>
-              <form id="deleteform" action="/campgrounds/<%= campground._id%>?_method=DELETE" method="POST">
+              <a className="btn btn-warning" href={`{/yelcamp/%7B/campgrounds/${camp.camp._id}/edit}`}>Edit</a>
+              <form id="deleteform" action={`{/yelcamp/%7B/campgrounds/${camp.camp._id}?_method=DELETE}`} method="POST">
                 <button className="btn btn-danger">Delete</button>
               </form>
           </div> 
         </div>
         <div className="well">
           <div className="text-right">
-            <a className=" btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Add New Comment</a>
+            <a className=" btn btn-success" href={`{/yelcamp/%7B/campgrounds/${camp.camp._id}/comments/new}`}>Add New Comment</a>
           </div>
               <div className="row">
                 <div className="col-md-12">
@@ -40,8 +40,8 @@ const allCamps = () => {
                   <span className="pull-right"> 10 days ago </span>
                   <p> 
                   </p>
-                    <a className="btn btn-xs btn-warning" href="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/edit">Edit</a>
-                    <form id="deleteform" action="/campgrounds/<%= campground._id%>/comments/<%=comment._id%>/?_method=DELETE" method="POST">
+                    <a className="btn btn-xs btn-warning" href={`{/yelcamp/%7B/campgrounds/${camp.camp._id}/comments/${comment._id}/edit}`}>Edit</a>
+                    <form id="deleteform" action={`{/yelcamp/%7B/campgrounds/${camp.camp._id}/comments/${comment._id}/?_method=DELETE}`} method="POST">
                       <button className="btn btn-xs btn-danger">Delete</button>
                     </form>
 
@@ -50,7 +50,7 @@ const allCamps = () => {
 
         </div>
       </div>
-      <a className="btn btn-primary" href="/campgrounds">Go Back</a>
+      <a className="btn btn-primary" href="/yelpcamp/campgrounds">Go Back</a>
     </div>
   </div>
 
@@ -58,4 +58,4 @@ const allCamps = () => {
 }
 
 
-export default allCamps;
+export default Campdetail;
