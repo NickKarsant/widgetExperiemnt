@@ -45,6 +45,7 @@ const Search = () => {
         <div className="right floated content">
           <a
             className="ui button"
+            rel="noreferrer"
             target="_blank"
             href={`https://en.wikipedia.org?curid=${result.pageid}`}
           >
