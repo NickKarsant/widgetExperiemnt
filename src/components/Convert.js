@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-
+const translateKey = process.env.TRANSLATE_API_KEY;
 
 const Convert = ({ text, language}) =>{
   const [translation, setTranslation] = useState('');
@@ -28,8 +28,7 @@ const Convert = ({ text, language}) =>{
             q: text,
             target: language.value,
 
-            // API KEY WITHHELD FOR SECURITY PURPOSES
-            key:'' 
+            key: translateKey
           }
         }
       );

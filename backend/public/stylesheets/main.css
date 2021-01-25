@@ -1,0 +1,160 @@
+/* *{
+  border: 1px solid red;
+} */
+main{
+  padding-bottom: 3em;
+}
+
+.more, .caption, .preview{
+  display: flex;
+  justify-content: center;
+} 
+
+
+#camps{
+  padding: 0.5em;
+  /* border: 1px solid red; */
+}
+
+
+
+/* NAV BAR */
+#navbarText{
+  /* border: 1px solid red !important; */
+  float: right !important;
+}
+
+
+.nav-item{
+  margin: 0 0.5em;
+}
+
+nav{
+  margin: 1em 0;
+  padding: 0;
+  height: 40px !important;
+  /* border: 1px solid red !important; */
+}
+
+.navbar-brand{
+  /* border: 1px solid red !important; */
+
+  font-size: 1.3em !important;
+  margin: 0.5em !important;
+  padding: 0 0 0 0 !important;
+}
+
+/* header.jumbotron {
+  margin-top: 5em !important;;
+} */
+
+
+/* index camps grid */
+.thumbnail img{
+  width: 200px;
+  height: 200px;
+}
+#camps{
+  width:50% !important;
+  padding: 0 !important; 
+}
+
+/* .card-img-top {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+} */
+
+
+/* new campgroundform */
+#add-image{
+  padding-bottom: 2.3em;
+}
+
+#image {
+  padding: 0;
+  height: 50%;
+}
+.nav-item a:visited{
+  color:white;
+}
+a:hover{
+  color: white;
+}
+a.more{
+  border: 1px solid red;
+}
+a:visited{
+  color: white;
+}
+a{
+  color: white;
+}
+
+
+/* SHOW PAGES */
+/* #map  {
+  display: block;
+  border: 1px solid red;
+
+} */
+
+#map{
+  width: 100%;
+  height: 500px;
+}
+
+a.nav-item:hover{
+  color: white;
+}
+
+.geo {
+  /* border: 1px solid red; */
+  padding: 0 !important;
+} 
+.lon{
+  margin-left: 4% !important;
+}
+.lat{
+  margin-left: 6% !important;
+}
+.ele{
+  width: 110% !important;
+}
+
+.img-thumbnail{
+  border: none !important;
+}
+
+.inner {
+  float: left;
+  padding: 5px;
+}
+
+/* Clear floats after image containers */
+.outer::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+#rating{
+  width: 50%;
+}
+
+/* footer */
+.fixed-bottom{
+  margin-top: 2em !important;
+}
+
+
+/* login and Register */
+.uncenter {
+  display: flex;
+  justify-content: flex-start;
+}
+
+div#add.shadow{
+  padding: 0 !important;
+}
+

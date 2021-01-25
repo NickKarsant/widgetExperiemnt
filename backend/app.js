@@ -1,84 +1,100 @@
-const createError = require("http-errors");
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 const express = require("express");
-const app = express();
 const path = require("path");
-const cookieParser = require("cookie-parser");
-const bodyParser = require("body-parser");
-const logger = require("morgan");
-const cors = require("cors");
-const indexRouter = require("./routes/campgrounds/index");
-const usersRouter = require("./routes/users");
 const mongoose = require("mongoose");
-const mongoDB = require("mongodb");
-const seedDB = require("./seed");
+const ejsMate = require("ejs-mate");
+const session = require("express-session");
+const flash = require("connect-flash");
+const ExpressError = require("./utils/ExpressError");
+const methodOverride = require("method-override");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const User = require("./models/user");
 
-const Campground = require('./models/campground');
+const userRoutes = require("./routes/users");
+const campgroundRoutes = require("./routes/campgrounds");
+const reviewRoutes = require("./routes/reviews");
 
-const campRouter = require("./routes/campgrounds/new");
-const allCampsRouter = require("./routes/campgrounds/index");
-
-// connect to database
+// database connection
 mongoose
   .connect("mongodb://localhost:27017/yelpcamp", {
     useUnifiedTopology: true,
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false
   })
   .then(() => {
-    console.log("WidgetYelp database connected");
+    console.log("YelpCamp database connected");
   })
   .catch(err => {
     console.log("OH NO ERROR!");
     console.log(err);
   });
 
-const db = mongoose.connection;
-// db.on('error', console.error.bind(console, "connection error:"));
-// db.once('open', function(){
-//   console.log("WidgetYelp database connected")
-// });
+const app = express();
 
-
-
-
-// seed database
-seedDB();
-
-app.use((req, res, next) => {
-  console.log("hey!")
-  next();
-})
-
-
-// view engine setup
+app.engine("ejs", ejsMate);
+app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "jade");
 
-app.use(logger("dev"));
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
-app.use("/index", allCampsRouter);
+const sessionConfig = {
+  secret: "thisshouldbeabettersecret!",
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    httpOnly: true,
+    expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+    maxAge: 1000 * 60 * 60 * 24 * 7
+  }
+};
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
+app.use(session(sessionConfig));
+app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  next();
 });
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
+app.use("/yelpcamp/auth", userRoutes);
+app.use("/yelpcamp/campgrounds", campgroundRoutes);
+app.use("/yelpcamp/campgrounds/:id/reviews", reviewRoutes);
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render("error");
+app.get("/", (req, res) => {
+  res.send("REACT App goes here");
 });
 
-module.exports = app;
+// landing page
+app.get("/yelpcamp", (req, res) => {
+  res.render("landing");
+});
+
+app.all("*", (req, res, next) => {
+  next(new ExpressError("Page Not Found", 404));
+});
+
+app.use((err, req, res, next) => {
+  const { statusCode = 500 } = err;
+  if (!err.message) err.message = "Oh No, Something Went Wrong!";
+  res.status(statusCode).render("error", { err });
+});
+
+app.listen(5000, () => {
+  console.log("Serving on port 3000");
+});
