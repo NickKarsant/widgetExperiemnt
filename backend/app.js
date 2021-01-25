@@ -6,7 +6,7 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
 const cors = require("cors");
-const indexRouter = require("./routes/index");
+const indexRouter = require("./routes/campgrounds/index");
 const usersRouter = require("./routes/users");
 const mongoose = require("mongoose");
 const mongoDB = require("mongodb");
@@ -14,12 +14,12 @@ const seedDB = require("./seed");
 
 const Campground = require('./models/campground');
 
-const campRouter = require("./routes/new");
-const allCampsRouter = require("./routes/index");
+const campRouter = require("./routes/campgrounds/new");
+const allCampsRouter = require("./routes/campgrounds/index");
 
 // connect to database
 mongoose
-  .connect("mongodb://localhost:27017/widgetYelp", {
+  .connect("mongodb://localhost:27017/yelpcamp", {
     useUnifiedTopology: true,
     useNewUrlParser: true
   })
@@ -42,6 +42,11 @@ const db = mongoose.connection;
 
 // seed database
 seedDB();
+
+app.use((req, res, next) => {
+  console.log("hey!")
+  next();
+})
 
 
 // view engine setup

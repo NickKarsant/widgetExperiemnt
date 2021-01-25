@@ -26,15 +26,6 @@ const Nav = () => {
           <a className="navbar-brand" href="/yelpcamp">
             YelpCamp
           </a>
-          <button
-            id="burger"
-            onClick={toggleBurger(this)}
-            className="btn btn-sm navbar-toggle collapsed"
-          >
-            <div className="bar1"></div>
-            <div className="bar2"></div>
-            <div className="bar3"></div>
-          </button>
         </div>
 
         <div className="collapse navbar-collapse">
