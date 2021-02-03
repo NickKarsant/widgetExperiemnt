@@ -5,8 +5,10 @@ const mapBoxToken = process.env.MAPBOX_TOKEN;
 const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
 
 module.exports.index = async (req, res) => {
+  // axios/fetch get("/")
   const allCamps = await Campground.find({});
   res.render("campgrounds/index", { allCamps });
+  // res.json  (allCamps) 
 };
 
 module.exports.renderNewForm = (req, res) => {
